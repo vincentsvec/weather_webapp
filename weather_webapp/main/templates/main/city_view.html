@@ -1,0 +1,119 @@
+{% extends "main/base.html"%}
+
+{% load custom_filters %}
+
+{% block title %}
+City Name
+{% endblock %}
+
+{% block body %}
+<main>
+    {% if user.is_authenticated %}
+    <a href="/add-city/{{city_id}}"><button class="add-city-btn" onclick="alertMsg('City added!')">Add</button></a>
+    {% endif %}
+    <div class="main-info">
+        <h1>{{ city_name }}</h1>
+        <h2>{{ city_details }}</h2>
+        <h1>{{ weather_data.current.temp|floatformat:"0" }}°</h1>
+        {% for description in weather_data.current.weather %}   
+        <p>{{ description.description }}</p>
+        {% endfor %}
+        {% with temp=weather_data.daily|first %}
+        <p>Max: {{ temp.temp.max|floatformat:"0" }}° Min: {{temp.temp.min|floatformat:"0"}}°</p>
+        {% endwith %}
+    </div>
+    <div class="forecast-container today-forecast">
+        <div class="forecast-header">
+            <h3>Hourly forecast</h3>
+            <h3>{{weather_data.timezone}}</h3>
+        </div>
+        <div class="forecast-content">
+            {% for hour in weather_data.hourly %}
+            <div class="hour-container">
+                <h3>{{ hour.dt|unix_to_hour:weather_data.timezone}}</h3>
+                {% with icon=hour.weather|first %}
+                <img class="weather-icon" src="http://openweathermap.org/img/wn/{{icon.icon}}@2x.png"></img>
+                <h2>{{ hour.temp|floatformat:"0" }}°</h2>
+                {% endwith %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="forecast-container week-forecast">
+        <div class="forecast-header">
+            <h3>Daily forecast</h3>
+            <h3>{{weather_data.timezone}}</h3>
+        </div>
+        <div class="forecast-content">
+            {% for day in weather_data.daily %}
+            <div class="day-container">
+                <h3>{{ day.dt|get_day:weather_data.timezone }}</h3>
+                <div>
+                    {% with icon=day.weather|first %}
+                    <img class="weather-icon" src="http://openweathermap.org/img/wn/{{icon.icon}}@2x.png"></img>
+                    {% endwith %}
+                    <h3 class="sun">Sunrise: {{ day.sunrise|unix_to_hour_min:weather_data.timezone }}</h3>
+                    <h3 class="sun">Sunset:  {{ day.sunset|unix_to_hour_min:weather_data.timezone }}</h3>
+                    <h3>Min: {{ day.temp.min|floatformat:"0" }}°</h3>
+                    <h3>Max: {{ day.temp.max|floatformat:"0" }}°</h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="other-info">
+        <div class="other-info-sub">
+            <div class="forecast-container">
+                <div class="forecast-header">
+                    <h3>Feels like</h3>
+                </div>
+                <div class="forecast-content-mini">
+                    <h3>{{weather_data.current.feels_like|floatformat:"0" }}°</h3>
+                </div>
+            </div>
+            <div class="forecast-container">
+                <div class="forecast-header">
+                    <h3>Pressure</h3>
+                </div>
+                <div class="forecast-content-mini">
+                    <h3>{{weather_data.current.pressure}} hPa</h>
+                </div>
+            </div>
+            <div class="forecast-container">
+                <div class="forecast-header">
+                    <h3>Humidity</h3>
+                </div>
+                <div class="forecast-content-mini">
+                    <h3>{{weather_data.current.humidity}}%</h>
+                </div>
+            </div>
+        </div>
+        <div class="other-info-sub">
+            <div class="forecast-container">
+                <div class="forecast-header">
+                    <h3>UV Index</h3>
+                </div>
+                <div class="forecast-content-mini">
+                    <h3>{{weather_data.current.uvi}}</h>
+                </div>
+            </div>
+            <div class="forecast-container">
+                <div class="forecast-header">
+                    <h3>Clouds</h3>
+                </div>
+                <div class="forecast-content-mini">
+                    <h3>{{weather_data.current.clouds}}%</h>
+                </div>
+            </div>
+            <div class="forecast-container">
+                <div class="forecast-header">
+                    <h3>Wind</h3>
+                </div>
+                <div class="forecast-content-mini">
+                    <h3>{{weather_data.current.wind_speed}} {% if unit == "metric" %}m/s{% else %}mi/h{% endif %}</h>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "main/base.html"%}
+
+{% block title %}
+My Weather
+{% endblock %}
+
+{% block body %}
+<main>
+    <h1 class="page-header">Search results for "{{ searched_city }}" :</h1>
+    <div class="content-container">
+    {% for city in cities %}
+        <div class="city-container">
+            <a href="/cities/{{ city }}">    
+                <button>{{ city }}</button>
+            </a>
+        </div>
+    {% endfor %}
+    <p>Don't see your city? Try checking your spelling or make your search more accurate.</p>
+    </div>
+</main>
+{% endblock %}

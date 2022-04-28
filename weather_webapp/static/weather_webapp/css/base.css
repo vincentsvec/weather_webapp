@@ -1,0 +1,538 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+p {
+    margin-bottom: 0px;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+}
+
+body {
+    height: 100vh;
+    min-width: 630px;
+    min-height: 520px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+nav {
+    height: 5vh;
+    min-height: 50px;
+    background-color: #1d71f2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 10px 10px 50px #b3b3b3;
+    position: relative;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    width: 33%;
+    padding-top: 10px;
+}
+
+nav .logo a {
+    color: #e6f8ff;
+}
+
+nav .user-dropdown {
+    width: 33%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+nav form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+
+nav form input {
+    width: 85%;
+    height: 60%;
+    text-align: center;
+    font-size: 1rem;
+    border: 1px solid #8d8d8d;
+    border-radius: 5px;
+    background-color: #e6f8ff;
+}
+
+nav form button {
+    width: 15%;
+    margin-left: 10px;
+    font-size: 1rem;
+    height: 60%;
+    border: 1px solid #8d8d8d;
+    background-color: #e6f8ff;
+    border-radius: 5px;
+}
+
+nav .user-profile {
+    height: 40px;
+    width: 40px;
+    background-color: #e6f8ff;
+    border-radius: 50%;
+    border: none;
+    color: black;
+    padding-top: 9px;
+    font-weight: bolder;
+}
+
+nav .user-profile:hover {
+    background-color: #ffffff;
+    color: black;
+}
+
+nav .user-profile:active {
+    background-color: #ffffff !important;
+}
+
+nav .user-profile:focus {
+    box-shadow: none;
+}
+
+main {
+    height: 95vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: #98cbf0;
+    overflow-y: scroll;
+}
+
+main .content-container {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    overflow-y: scroll;
+}
+
+main .content-container p {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+main .city-container {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+main .city-container a {
+    width: 50%;
+    height: 100%;
+}
+
+main .city-container a button {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #8d8d8d;
+    background-color: #e3f4fe;
+}
+
+main .main-info {
+    height: 20vh;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+
+.page-header {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.forecast-container {
+    margin: 30px;
+    background-color: #70c1f1;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.forecast-content {
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    overflow-y: scroll;
+}
+
+.forecast-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 35px;
+    border-bottom: solid 1px #000000;
+}
+
+.today-forecast {
+    height: 15vh;
+    min-height: 190px;
+}
+
+.today-forecast .hour-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0px 5px 0px 5px;
+    padding: 15px 0px 10px 0px;
+}
+
+.weather-icon {
+    height: 56px;
+}
+
+.week-forecast {
+    height: 50vh;
+    min-height: 635px;
+}
+
+.week-forecast .forecast-content {
+    flex-direction: column;
+    padding: 10px 20px 10px 20px;
+    height: 90%;
+}
+
+.day-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 15%;
+    border-bottom: 1px solid #000000;
+}
+
+.day-container div {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.day-container h3 {
+    width: 10%;
+}
+
+.other-info {
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.other-info .forecast-container {
+    width: 100%;
+}
+
+.forecast-content-mini {
+    height: 85%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.other-info-sub {
+    width: 50%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: row;
+}
+
+.add-city-btn {
+    position: absolute;
+    right: 30px;
+    transform: translateY(30px);
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #f5f5f5;
+    background-color: white;
+}
+
+.city-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.city-row a {
+    width: 95%;
+}
+
+.cities-container {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 100px 0px 100px;
+}
+
+.city-overview {
+    height: 100px;
+    background-color: #e3f4fe;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.city-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+}
+
+.city-info h1 {
+    text-align: end;
+}
+
+.current-city {
+    height: 150px;
+}
+
+.trash-btn {
+    height: 100px;
+    margin-left: 10px;
+    width: calc(100% - 10px);
+    border-radius: 15px;
+    border: 1px solid black;
+    background-color: rgb(205, 242, 255);
+}
+
+.trash-link {
+    width: 5% !important;
+}
+
+.intro-msg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.intro-msg h3 {
+    text-align: center;
+}
+
+.intro-msg a {
+    border-top: 20px;
+    color: rgb(0, 119, 163);
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1530px) {
+    .other-info {
+        flex-direction: column;
+        height: 40vh;
+    }
+
+    .other-info-sub {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .city-row a {
+        width: 90%;
+    }
+
+    .trash-link {
+        width: 10% !important;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        min-width: 0px;
+    }
+
+    main {
+        padding-bottom: 80px;
+    }
+
+    main .main-info {
+        height: 10vh;
+        min-height: 180px;
+        padding-top: 0px;
+    }
+
+    .other-info {
+        height: 30vh;
+        padding: 10px;
+    }
+
+    .other-info .forecast-container {
+        margin: 10px;
+        width: calc(100% / 3);
+        min-width: 0px;
+    }
+
+    .other-info-sub {
+        min-height: 0px;
+    }
+
+    .forecast-container {
+        margin: 10px 20px 10px 20px;
+    }
+
+    .today-forecast {
+        height: 10vh;
+        min-height: 150px;
+    }
+
+    .forecast-header {
+        height: 20px;
+    }
+
+    .week-forecast {
+        height: 45vh;
+        min-height: 550px;
+    }
+
+    .week-forecast .forecast-content {
+        padding: 10px;
+    }
+
+    .cities-container {
+        padding: 20px 20px 0px 20px;
+    }
+
+    .add-city-btn {
+        right: 20px;
+        transform: translateY(20px);
+    }
+
+    main .content-container {
+        padding-top: 0px;
+    }
+
+    main .city-container a {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h3 {
+        font-size: 0.9rem;
+    }
+
+    h4 {
+        font-size: 0.9rem;
+    }
+
+    h5 {
+        font-size: 0.6rem;
+        margin-bottom: 0px;
+    }
+
+    .city-search button {
+        display: none;
+    }
+
+    .city-overview {
+        height: 70px;
+        margin-bottom: 10px;
+    }
+
+    .trash-btn {
+        height: 70px;
+    }
+
+    .current-city {
+        height: 100px;
+    }
+
+    .current-city button {
+        font-size: 0.7rem;
+        padding: 5px;
+    }
+
+    .city-row a {
+        width: 80%;
+    }
+
+    .trash-link {
+        width: 20% !important;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .sun {
+        display: none;
+    }
+}

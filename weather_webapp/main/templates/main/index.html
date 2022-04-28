@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+My Weather
+{% endblock %}
+
+{% block body %}
+    <main>
+        {% if user.is_authenticated %}
+        <div class="cities-container">
+            <div class="city-overview current-city">
+                <div class="city-info">
+                    <h3>Your location</h3>
+                    <h5>{{ location_weather_data.name }}</h5>
+                    <h5>{{ location_weather_data.weather.0.description }}</h5>
+                </div>
+                <div class="city-info">
+                    {% if location_weather_data == None %}
+                    <button type="button" onclick="getLocation()">Allow location</button>
+                    {% else %}
+                    <h1>{{ location_weather_data.main.temp|floatformat:"0" }}°</h1>
+                    <h5 style="text-align: end;">Max: {{ location_weather_data.main.temp_max|floatformat:"0" }}° Min: {{ location_weather_data.main.temp_min|floatformat:"0" }}°</h5>
+                    <button type="button" onclick="getLocation()">Refresh location</button>
+                    {% endif %}
+                </div>
+            </div>
+            {% for city in weather_data %}
+            <div class="city-row"> 
+                <a href="/cities/{{ city.0 }}">
+                    <div class="city-overview">
+                        <div class="city-info">
+                            <h3>{{ city.0 }}</h3>
+                            <h5>{{ city.1.weather.0.description }}</h5>
+                        </div>
+                        <div class="city-info" style="min-width: 90px">
+                            <h1>{{ city.1.main.temp|floatformat:"0" }}°</h1>
+                            <h5 style="text-align: end">Max: {{ city.1.main.temp_max|floatformat:"0" }}° Min: {{ city.1.main.temp_min|floatformat:"0" }}°</h5>
+                        </div>
+                    </div>
+                </a>
+                <a href='/remove-city/{{ city.0 }}' class="trash-link"><button class="far fa-trash-alt fa-lg trash-btn"></button></a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="intro-msg">
+            <h3>To use the full application and have acces to changing units your location weather and more</h3>
+            <p><a href="/signup">Sign up</a> or <a href="/login">Login</a></p>
+        </div>
+        {% endif %}
+    </main>
+</form>
+{% endblock %}
