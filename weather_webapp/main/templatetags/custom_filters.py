@@ -1,6 +1,5 @@
 from django import template
 import datetime
-import pandas as pd
 import pytz
 
 register = template.Library()
