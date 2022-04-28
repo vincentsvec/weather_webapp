@@ -25,9 +25,9 @@ def unix_to_hour_min(unix, timezone):
 
 @register.filter
 def get_day(unix, timezone):
-    timestamp = pd.Timestamp(unix, unit='s')
-    timestamp.tz_localize(tz=timezone)
-    index = timestamp.weekday()
+    timezone = pytz.timezone(timezone)
+    now = datetime.datetime.fromtimestamp(unix, timezone)
+    index = now.weekday()
 
     days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     day = days[index]
